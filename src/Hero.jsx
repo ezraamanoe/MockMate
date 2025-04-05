@@ -3,6 +3,7 @@ import {NavBar} from "@/components/ui/navbar"
 import { Particles } from "@/components/magicui/particles";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { useNavigate } from 'react-router-dom';
+import { TypingAnimation } from "@/components/magicui/typing-animation";
 
 
 function Hero() {
@@ -29,6 +30,8 @@ function Hero() {
         improve answers, and get hired.  
         </p>
       </div>
+
+      
 
       <InteractiveHoverButton onClick={() => navigate('form')}>
         Start practicing now

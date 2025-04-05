@@ -21,24 +21,23 @@ function Chatbot() {
   const queryParams = new URLSearchParams(location.search)
   const name = queryParams.get("name")
 
-  // useEffect(() => {
-  //   // Call the backend when the component mounts
-  //   fetch("/first_question", {
-  //     method: "POST",  // Change to POST
-  //     headers: {
-  //       "Content-Type": "application/json",  // Set the content type as JSON
-  //     },
-  //     body: JSON.stringify(formData),  // Send the data to the backend
-  //   })
-  //     .then((response) => response.json()) // Parse the JSON response
-  //     .then((data) => {
-  //       console.log("Received data:", data);
-  //       setQuestion(data.question); // Assuming the response is like { "question": "asdfadfads" }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    // Call the backend when the component mounts
+    fetch("/first_question", {
+      method: "POST",  // Change to POST
+      headers: {
+        "Content-Type": "application/json",  // Set the content type as JSON
+      }, // Send the data to the backend
+    })
+      .then((response) => response.json()) // Parse the JSON response
+      .then((data) => {
+        console.log("Received data:", data);
+        setQuestion(data.question); // Assuming the response is like { "question": "asdfadfads" }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   const [typingDone, setTypingDone] = useState(false)
 
@@ -51,8 +50,9 @@ function Chatbot() {
       <div className="question">
       
       
-      <TypingAnimation>
-         Hi, Jordan! Welcome to your interview.
+      <TypingAnimation onComplete={() => setTypingDone(true)}
+      duration={50}>
+         {question}
       </TypingAnimation>
 
       </div>

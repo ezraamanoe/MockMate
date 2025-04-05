@@ -46,6 +46,7 @@ function Form() {
     const formData = {
       qualification,
       jobDescription,
+      name,
     }
 
     // Send data to backend using fetch
