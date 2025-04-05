@@ -34,3 +34,12 @@
   display: flex;
   align-items: center;
 }
+
+.form{
+  padding-bottom: 10%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
