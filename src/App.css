@@ -1,0 +1,36 @@
+.body{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hero-text{
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hero-text-subtitle{
+  padding: 3%;
+  max-width:50vw;
+  text-align: center;
+}
+.navbar{
+  padding: 1%;
+  display: flex;
+  align-items: center;
+}
