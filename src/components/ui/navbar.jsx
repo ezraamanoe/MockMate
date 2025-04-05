@@ -9,16 +9,17 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
+import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
   // const location = useLocation()
-
+  const navigate = useNavigate();
   return (
     <NavigationMenu>
       <NavigationMenuList>
-      {location.pathname !== '/hero' && (
+      {location.pathname !== '/' && (
         <NavigationMenuItem>
-          <NavigationMenuLink>Home</NavigationMenuLink>
+          <NavigationMenuLink onClick={() => navigate('/')}>Home</NavigationMenuLink>
         </NavigationMenuItem>
       )}
       

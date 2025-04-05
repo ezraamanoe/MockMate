@@ -43,3 +43,7 @@
   align-items: center;
   width: 100%;
 }
+
+.highlight{
+  color: blue;
+}

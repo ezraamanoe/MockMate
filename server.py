@@ -1,16 +1,17 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from dotenv import load_dotenv
 from openai import OpenAI
 import os
 from pathlib import Path
 import json
-#from flask_cors import CORS
+from flask_cors import CORS
 
 BASE_DIR = Path(__file__).parent.resolve()
 env_path = BASE_DIR / ".env"
 load_dotenv(env_path)
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='dist', static_url_path="")
+CORS(app)
 
 qualification = ""
 job_desc = ""
@@ -18,27 +19,31 @@ prev_qna = ""
 
 @app.route("/set_data", methods=['POST'])
 def set_data():
-    global qualification, job_desc
-    
-    json_data = request.get_json()
+    try:
+        json_data = request.get_json()
+        if not json_data:
+            return jsonify({"error": "No JSON provided"}), 400
         
-    qualification = json_data.get('qualification', qualification)
-    job_desc = json_data.get('jobDescription', job_desc)
+        qualification = json_data.get('qualification', "first-year student")
+        job_desc = json_data.get('jobDescription', "")
+        print(f"Qualification: {qualification}, Job Description: {job_desc}")
+        return jsonify({"status": "success", "qualification": qualification, "jobDescription": job_desc})
     
-    return qualification, job_desc
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route("/prev_qna", methods=['POST'])
 def prev_qna():
-
     global prev_qna
-    
-    json_data = request.get_json()
-        
-    prev_qna = json_data.get('QnA', prev_qna)
-    
-    return prev_qna
+    try:
+        json_data = request.get_json()
+        prev_qna = json_data.get('QnA', "")
+        return jsonify({"status": "success", "prevQnA": prev_qna})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-@app.route("/first_question")
+@app.route("/first_question", methods=['POST'])
 def first_question():
     
     global qualification, job_desc
@@ -61,7 +66,7 @@ def first_question():
     
     return question_json
 
-@app.route("/continue_interview")
+@app.route("/continue_interview", methods=['POST'])
 def continue_interview():
     
     global qualification, job_desc, prev_qna
@@ -83,6 +88,12 @@ def continue_interview():
     question_json = json.loads(cleaned)
     
     return question_json
+
+@app.route('/')
+@app.route('/interview')
+@app.route('/results')
+def serve_react():
+    return send_from_directory('dist', 'index.html')
 
 if __name__ == "__main__":
     app.run(debug="True")

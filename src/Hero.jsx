@@ -22,7 +22,7 @@ function Hero() {
 
       <div className="hero-text-subtitle">
         <p className="text-2xl text-justify">
-        Practice real-time interviews with an AI 
+        <a className="highlight">Practice</a> real-time <a className="highlight">interviews with</a> an <a className="highlight">AI </a>
         that talks back. MockMate simulates voice-powered 
         interview conversations to help you gain confidence, 
         improve answers, and get hired.  

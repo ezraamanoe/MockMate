@@ -47,7 +47,7 @@ function Form() {
     }
 
     // Send data to backend using fetch
-    fetch("/api/submit", {
+    fetch("set_data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
