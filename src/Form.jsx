@@ -21,10 +21,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Particles } from "@/components/magicui/particles"
 import { BorderBeam } from "@/components/magicui/border-beam"
 import { use, useState } from "react"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import { Input } from '@/components/ui/input'
 
 function Form() {
   const [qualification, setQualification] = useState("")
+  const [name, setName] = useState("")
   const [jobDescription, setJobDescription] = useState("")
   const [error, setError] = useState("")
   const navigate = useNavigate()
@@ -33,7 +35,7 @@ function Form() {
     e.preventDefault()
 
     // Basic validation
-    if (!qualification || !jobDescription) {
+    if (!qualification || !jobDescription || !name) {
       setError("Both fields must be filled!")
       return
     }
@@ -65,7 +67,7 @@ function Form() {
       })
 
     // Redirect to the chatbot page after submission
-    navigate("/chatbot")
+    navigate(`/chatbot?name=${encodeURIComponent(name)}`)
   }
 
   return (
@@ -82,8 +84,8 @@ function Form() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit}>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-3">
+              <div className="grid w-full items-center gap-3">
+                <div className="flex flex-col space-y-3 mt-3">
                   <Label htmlFor="qualification">Select your qualification</Label>
                   <Select
                     id="qualification"
@@ -105,6 +107,15 @@ function Form() {
                 </div>
               </div>
               <div className="flex flex-col space-y-3 mt-3">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  id="name"
+                  value={name}
+                  placeholder="Enter your name here"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col space-y-3 mt-7">
                 <Label htmlFor="job-description">Job description</Label>
                 <Textarea
                   id="job-description"

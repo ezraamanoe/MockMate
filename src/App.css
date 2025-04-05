@@ -47,3 +47,17 @@
 .highlight{
   color: blue;
 }
+
+.question{
+  display: flex;
+  padding-top: 5rem;
+  height: 30rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.answer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

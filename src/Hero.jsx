@@ -13,6 +13,7 @@ function Hero() {
     <div className="navbar">
       <NavBar />
     </div>
+    
 
     <div className="hero-text">
 
@@ -21,8 +22,8 @@ function Hero() {
       </span>
 
       <div className="hero-text-subtitle">
-        <p className="text-2xl text-justify">
-        <a className="highlight">Practice</a> real-time <a className="highlight">interviews with</a> an <a className="highlight">AI </a>
+        <p className="text-2xl text-center">
+        real-time interviews with an AI
         that talks back. MockMate simulates voice-powered 
         interview conversations to help you gain confidence, 
         improve answers, and get hired.  
