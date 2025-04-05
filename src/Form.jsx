@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
   Select,
@@ -22,7 +23,6 @@ import { Particles } from "@/components/magicui/particles"
 import { BorderBeam } from "@/components/magicui/border-beam"
 import { use, useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import { Switch } from "@/components/ui/switch"
 
 function Form() {
   const [qualification, setQualification] = useState("")
