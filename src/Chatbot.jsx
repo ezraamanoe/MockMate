@@ -7,7 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Particles } from "@/components/magicui/particles";
 import { TypingAnimation } from "@/components/magicui/typing-animation";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Loader2 } from "lucide-react";  // Import the loader icon
+import { Loader2 } from "lucide-react";
+import { useSpeechRecognition } from "react-speech-kit";
+import { Mic }  from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+
 
 function Chatbot() {
   const [question, setQuestion] = useState("");
@@ -17,10 +21,41 @@ function Chatbot() {
   const [answer, setAnswer] = useState("");
   const [interviewDone, setInterviewDone] = useState(false);
   const [typingDone, setTypingDone] = useState(false);
-  const [loading, setLoading] = useState(false);  // Loading state for the button
+  const [loading, setLoading] = useState(false);
+  const [hasFirstQuestion, setHasFirstQuestion] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const duration = 10;
+
+  const { listen, stop } = useSpeechRecognition({
+    onResult: ( result ) => {
+      setAnswer(result);}
+  });
 
   useEffect(() => {
-    // Fetch the first question when the component mounts
+    let intervalId;
+    
+    if (typingDone) {
+      intervalId = setInterval(() => {
+        setProgress(prev => {
+          const newValue = prev + (100 / duration);
+          if (newValue >= 100) {
+            clearInterval(intervalId); // Clear interval when reaching 100%
+            handleSubmit();
+            return 100;
+          }
+          return newValue;
+        });
+      }, 1000);
+  
+      return () => {
+        clearInterval(intervalId); // Cleanup on unmount or when typingDone changes
+        setProgress(0); // Reset progress when effect cleans up
+      };
+    }
+  }, [typingDone]);
+        
+
+  useEffect(() => {
     fetch("/first_question", {
       method: "POST",
       headers: {
@@ -29,8 +64,8 @@ function Chatbot() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Received data:", data);
         setQuestion(data.question);
+        setHasFirstQuestion(true);
         setTypingDone(false);
         if (data.question.toLowerCase().startsWith("thank you for your time")) {
           setInterviewDone(true);
@@ -42,9 +77,8 @@ function Chatbot() {
   }, []);
 
   const handleSubmit = () => {
-    // Delay loading spinner to ensure the question is fully typed
-      setLoading(true);  // Set loading to true when submitting // Adjust this timeout to match your animation duration
-
+    setLoading(true);
+    
     fetch("/prev_qna", {
       method: "POST",
       headers: {
@@ -69,10 +103,9 @@ function Chatbot() {
         setAnswer("");
         setTypingDone(false);
         
-        // Add a delay before setting loading to false
         setTimeout(() => {
-          setLoading(false);  // Set loading to false after a delay
-        }, 500);  // Adjust the delay to fit your needs (e.g., 1000ms = 1 second)
+          setLoading(false);
+        }, 500);
 
         if (data.question.toLowerCase().startsWith("thank you for your time")) {
           setInterviewDone(true);
@@ -80,7 +113,7 @@ function Chatbot() {
       })
       .catch((err) => {
         console.error("Error:", err);
-        setLoading(false);  // Set loading to false in case of error
+        setLoading(false);
       });
   };
 
@@ -91,15 +124,16 @@ function Chatbot() {
       </div>
 
       <div className="question">
-        <TypingAnimation
-          onComplete={() => {
-            console.log("Typing done");
-            setTypingDone(true);
-          }}
-          duration={50}
-        >
-          {question}
-        </TypingAnimation>
+        {hasFirstQuestion && (
+          <TypingAnimation
+            onComplete={() => {
+              setTypingDone(true);
+            }}
+            duration={50}
+          >
+            {question}
+          </TypingAnimation>
+        )}
       </div>
 
       <div
@@ -113,22 +147,26 @@ function Chatbot() {
       >
         <Card className="w-[60vw]">
           <CardContent>
+            <Progress className="mb-4" value={progress}/>
             <Textarea
               placeholder="Type your answer here..."
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
+              disabled={!typingDone}
             />
           </CardContent>
-          <CardFooter>
-            <Button onClick={handleSubmit} disabled={loading}>
+          <CardFooter className="flex gap-5">
+            <Button onClick={handleSubmit} disabled={loading || !typingDone}>
               {loading ? (
                 <>
-                  <Loader2 className="animate-spin" /> Please wait...
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Please wait...
                 </>
               ) : (
                 "Submit"
               )}
             </Button>
+            <Button onMouseDown={listen} onMouseUp={stop}><Mic /></Button>
           </CardFooter>
         </Card>
       </div>
@@ -137,7 +175,7 @@ function Chatbot() {
         className="absolute inset-0 -z-10 h-full w-full"
         quantity={100}
         ease={80}
-        color={"#000000"}
+        color={"#ffffff"}
         vx={0.5}
         vy={0.5}
         refresh

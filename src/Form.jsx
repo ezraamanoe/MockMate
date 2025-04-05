@@ -22,7 +22,7 @@ import { Particles } from "@/components/magicui/particles"
 import { BorderBeam } from "@/components/magicui/border-beam"
 import { use, useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import { Input } from '@/components/ui/input'
+import { Switch } from "@/components/ui/switch"
 
 function Form() {
   const [qualification, setQualification] = useState("")
@@ -143,7 +143,7 @@ function Form() {
         className="absolute inset-0 -z-10 h-full w-full"
         quantity={100}
         ease={80}
-        color={"#000000"}
+        color={"#ffffff"}
         vx={0.5}
         vy={0.5}
         refresh

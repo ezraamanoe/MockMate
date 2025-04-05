@@ -78,6 +78,7 @@ def first_question():
     
     question_json["question"] = f"Hi {name}, welcome to the interview. So to get started, let me ask my first question. {question_json.get('question', '')}"
     
+    print(question_json)
     def play_audio():
         client = Neuphonic(api_key=os.getenv('NEUPHONIC_API_KEY'))
         sse = client.tts.SSEClient()

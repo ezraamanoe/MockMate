@@ -18,8 +18,7 @@ function Hero() {
     
 
     <div className="hero-text">
-
-      <span className="pointer-events-none font-extrabold whitespace-pre-wrap bg-gradient-to-b from-black to-gray-500/80 bg-clip-text text-center text-9xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
+    <span className="pointer-events-none font-extrabold whitespace-pre-wrap bg-gradient-to-b from-white to-black/40 bg-clip-text bg-[length:100%_80%] bg-[position:bottom] text-center text-9xl font-semibold leading-none text-transparent dark:from-slate-900/10 dark:to-white">
         MockMate
       </span> 
 
@@ -43,7 +42,7 @@ function Hero() {
         className="absolute inset-0 -z-10 h-full w-full"
         quantity={100}
         ease={80}
-        color={"#000000"}
+        color={"#ffffff"}
         vx={0.5}
         vy={0.5}
         refresh
