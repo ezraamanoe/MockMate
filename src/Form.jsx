@@ -20,12 +20,14 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { Particles } from "@/components/magicui/particles"
 import { BorderBeam } from "@/components/magicui/border-beam"
-import { useState } from "react"
+import { use, useState } from "react"
+import { useNavigate } from 'react-router-dom';
 
 function Form() {
   const [qualification, setQualification] = useState("")
   const [jobDescription, setJobDescription] = useState("")
   const [error, setError] = useState("")
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -61,6 +63,9 @@ function Form() {
         console.error("Error:", error)
         // Handle error (e.g., show error message)
       })
+
+    // Redirect to the chatbot page after submission
+    navigate("/chatbot")
   }
 
   return (

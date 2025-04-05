@@ -2,9 +2,11 @@ import './App.css'
 import {NavBar} from "@/components/ui/navbar"
 import { Particles } from "@/components/magicui/particles";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
+import { useNavigate } from 'react-router-dom';
 
 
 function Hero() {
+    const navigate = useNavigate()
 
   return (
     <>
@@ -27,7 +29,7 @@ function Hero() {
         </p>
       </div>
 
-      <InteractiveHoverButton>
+      <InteractiveHoverButton onClick={() => navigate('form')}>
         Start practicing now
       </InteractiveHoverButton>
 

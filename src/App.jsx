@@ -1,30 +1,20 @@
 import './App.css'
-import { NavBar } from "@/components/ui/navbar"
 import React, { useEffect, useState } from "react"
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Hero from './Hero.jsx';
+import Form from './Form.jsx';
+import Chatbot from './Chatbot.jsx';
 
 function App() {
-  const [question, setQuestion] = useState("")
-
-  useEffect(() => {
-    // Call the backend when the component mounts
-    fetch("/get-question")
-      .then((response) => response.json()) // Parse the JSON response
-      .then((data) => {
-        console.log("Received data:", data)
-        setQuestion(data.question) // Assuming the response is like { "question": "asdfadfads" }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error)
-      })
-  }, [])
 
   return (
-    <>
-      <div className="navbar">
-        <NavBar />
-      </div>
-      <span>{question}</span>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Hero />} /> 
+        <Route path="/form" element={<Form />} />
+        <Route path="/chatbot" element={<Chatbot />} />
+      </Routes>
+    </Router>
   )
 }
 
