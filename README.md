@@ -4,14 +4,18 @@
 MockMate is an AI-powered mock interview web application that helps users practice job interviews with personalized questions based on the job description and user's qualifications. The app features voice interaction, multiple interview modes, and performance reviews.
 
 ## Features  
-✅ **Personalized Interviews** - Questions generated from job descriptions  
-✅ **Voice Interaction** - Text-to-speech questions and voice-to-text answers  
+✅ **Personalized Interviews** - Questions generated from job descriptions
+
+✅ **Voice Interaction** - Text-to-speech questions and voice-to-text answers
+
 ✅ **Two Interview Modes**:  
    - Professional mode  
-   - "Troll mode" (mean interviewer for stress testing)  
+   - "Troll mode" (mean interviewer for stress testing)
+
 ✅ **Structured Format**:  
    - 5 questions max per session  
-   - 3-minute timer per question  
+   - 3-minute timer per question
+
 ✅ **Performance Review** - Detailed feedback after each session  
 
 ## Technologies Used  
