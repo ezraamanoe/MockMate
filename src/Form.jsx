@@ -21,13 +21,15 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { Particles } from "@/components/magicui/particles"
 import { BorderBeam } from "@/components/magicui/border-beam"
-import { use, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
+import { Checkbox } from "@/components/ui/checkbox"
 
 function Form() {
   const [qualification, setQualification] = useState("")
   const [name, setName] = useState("")
   const [jobDescription, setJobDescription] = useState("")
+  const [trollMode, setTrollMode] = useState(false) // Track checkbox state
   const [error, setError] = useState("")
   const navigate = useNavigate()
 
@@ -36,7 +38,7 @@ function Form() {
 
     // Basic validation
     if (!qualification || !jobDescription || !name) {
-      setError("Both fields must be filled!")
+      setError("All fields must be filled!")
       return
     }
 
@@ -47,6 +49,7 @@ function Form() {
       qualification,
       jobDescription,
       name,
+      trollMode, // Add the checkbox state (true/false) here
     }
 
     // Send data to backend using fetch
@@ -124,10 +127,19 @@ function Form() {
                   value={jobDescription}
                   onChange={(e) => setJobDescription(e.target.value)}
                 />
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="troll"
+                    checked={trollMode} // Make checkbox controlled
+                    onCheckedChange={(checked) => setTrollMode(checked)} // Update state on change
+                  />
+                  <Label htmlFor="troll">Do you want to activate troll mode?</Label>
+                </div>
               </div>
               {error && <p className="text-red-500 text-sm mt-3">{error}</p>}
             </form>
           </CardContent>
+
           <CardFooter className="flex justify-between">
             <Button type="submit" onClick={handleSubmit}>Start Now!</Button>
           </CardFooter>

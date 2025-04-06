@@ -10,6 +10,7 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import { useNavigate } from 'react-router-dom';
+import { Linkedin, Github } from "lucide-react";
 
 function NavBar() {
   // const location = useLocation()
@@ -18,25 +19,19 @@ function NavBar() {
     <NavigationMenu>
       <NavigationMenuList>
       {location.pathname !== '/' && (
-        <NavigationMenuItem>
+        <NavigationMenuItem className="ml-3 mr-3"> 
           <NavigationMenuLink onClick={() => navigate('/')}>Home</NavigationMenuLink>
         </NavigationMenuItem>
       )}
       
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Log in</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <NavigationMenuLink>Link</NavigationMenuLink>
-          </NavigationMenuContent>
+        <NavigationMenuItem className="ml-3 mr-3">
+          <NavigationMenuLink className="flex flex-row items-center gap-1" onClick={(e) => { e.preventDefault(); window.open('https://www.linkedin.com/in/ezramanoe/', '_blank'); }}><Linkedin size={0.01} />Ezra</NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[50px] gap-3 p-4 md:w-[100px] md:grid-cols-1 lg:w-[200px]">
-              <NavigationMenuLink>GitHub</NavigationMenuLink>
-              <NavigationMenuLink>LinkedIn</NavigationMenuLink>
-            </ul>
-          </NavigationMenuContent>
+        <NavigationMenuItem className="ml-3 mr-3">
+        <NavigationMenuLink className="flex flex-row items-center gap-1" onClick={(e) => { e.preventDefault(); window.open('https://www.linkedin.com/in/jordan-keane-liman/', '_blank'); }}><Linkedin size={0.01} />Jordan</NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem className="ml-3 mr-3">
+        <NavigationMenuLink className="flex flex-row items-center gap-1" onClick={(e) => { e.preventDefault(); window.open('https://github.com/ezraamanoe/studenthack', '_blank'); }}><Github size={0.01} />GitHub</NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

@@ -18,7 +18,7 @@ function Hero() {
     
 
     <div className="hero-text">
-    <span className="pointer-events-none font-extrabold whitespace-pre-wrap bg-gradient-to-b from-white to-black/40 bg-clip-text bg-[length:100%_80%] bg-[position:bottom] text-center text-9xl font-semibold leading-none text-transparent dark:from-slate-900/10 dark:to-white">
+    <span className="pointer-events-none font-extrabold whitespace-pre-wrap bg-gradient-to-b from-white to-black/0 bg-clip-text bg-[length:100%_90%] bg-[position:bottom] text-center text-9xl font-semibold leading-none text-transparent dark:from-slate-900/10 dark:to-white">
         MockMate
       </span> 
 

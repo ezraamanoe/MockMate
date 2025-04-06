@@ -24,7 +24,7 @@ function Chatbot() {
   const [loading, setLoading] = useState(false);
   const [hasFirstQuestion, setHasFirstQuestion] = useState(false);
   const [progress, setProgress] = useState(0);
-  const duration = 10;
+  const duration = 180;
 
   const { listen, stop } = useSpeechRecognition({
     onResult: ( result ) => {
@@ -67,7 +67,7 @@ function Chatbot() {
         setQuestion(data.question);
         setHasFirstQuestion(true);
         setTypingDone(false);
-        if (data.question.toLowerCase().startsWith("thank you for your time")) {
+        if (data.question.toLowerCase().startsWith("thank you")) {
           setInterviewDone(true);
         }
       })
@@ -107,7 +107,7 @@ function Chatbot() {
           setLoading(false);
         }, 500);
 
-        if (data.question.toLowerCase().startsWith("thank you for your time")) {
+        if (data.question.toLowerCase().startsWith("thank you")) {
           setInterviewDone(true);
         }
       })
@@ -129,7 +129,7 @@ function Chatbot() {
             onComplete={() => {
               setTypingDone(true);
             }}
-            duration={50}
+            duration={30}
           >
             {question}
           </TypingAnimation>
