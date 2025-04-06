@@ -158,7 +158,7 @@ function Chatbot() {
             />
           </CardContent>
           <CardFooter className="flex gap-5">
-            <Button onClick={handleSubmit} disabled={loading || !typingDone}>
+            <Button onClick={handleSubmit} disabled={loading || !typingDone || listening}>
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
