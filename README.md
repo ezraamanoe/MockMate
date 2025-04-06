@@ -1,49 +1,67 @@
-# MockMate
+# 🤖 MockMate
 
-## Overview  
-MockMate is an AI-powered mock interview web application that helps users practice job interviews with personalized questions based on the job description and user's qualifications. The app features voice interaction, multiple interview modes, and performance reviews.
+**Your AI-Powered Mock Interview Companion**
 
-## Features  
-✅ **Personalized Interviews** - Questions generated from job descriptions
+MockMate is a smart web app designed to help you **ace your job interviews**. With personalized questions, voice interaction, and even a "troll mode" for stress testing, it's like having a coach and chaos goblin in one app. 🎤💼🔥
 
-✅ **Voice Interaction** - Text-to-speech questions and voice-to-text answers
+---
 
-✅ **Two Interview Modes**:  
-   - Professional mode  
-   - "Troll mode" (mean interviewer for stress testing)
+## 🚀 Overview
 
-✅ **Structured Format**:  
-   - 5 questions max per session  
-   - 3-minute timer per question
+MockMate helps users **practice job interviews** by generating tailored questions based on their **qualifications** and the **job description**. It offers:
 
-✅ **Performance Review** - Detailed feedback after each session  
+- 🎙️ Voice interaction  
+- 💬 AI-generated questions  
+- ⏱️ Timed responses  
+- 📈 Feedback & performance reviews  
 
-## Technologies Used  
+---
 
-### Frontend  
-- React.js  
-- React-speech-kit STT
+## ✨ Features
 
-### Backend  
-- Flask (Python)  
-- Neuphonics AI (voice synthesis)  
-- OpenRouter AI (question generation)  
+✅ **Personalized Interviews**  
+> Smart questions based on your job description and resume.
 
-## Running the App Locally
-<html>
-  <dl>
-    <dt>Prerequisites:</dt>
-    <dd>
-      - <a href="https://www.python.org">Python 3.9+</a>
-      <br/>
-      - <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.js and npm</a>
-      <br/>
-      - <a href="https://neuphonic.com">Neuphonic API key</a> (for API credentials)
-      <br/>
-      - <a href="https://openrouter.ai">OpenRouter API key</a> (for AI model)
-    </dd>
-  </dl>
-</html>
+✅ **Voice Interaction**  
+> - Text-to-speech (TTS) for questions  
+> - Voice-to-text (STT) for responses  
+
+✅ **Interview Modes**  
+- 👔 **Professional Mode** – Standard, polite interviewer  
+- 🤨 **Troll Mode** – A rude, stress-test interviewer (if you dare)
+
+✅ **Session Structure**  
+- 🎯 Up to **5 questions** per session  
+- 🕒 **3-minute timer** per answer
+
+✅ **Performance Review**  
+> Immediate and detailed feedback on your responses
+
+---
+
+## 🛠️ Tech Stack
+
+### 🌐 Frontend  
+- React.js ⚛️  
+- [`react-speech-kit`](https://www.npmjs.com/package/react-speech-kit) (STT)
+
+### 🔧 Backend  
+- Flask (Python 🐍)  
+- [Neuphonics](https://neuphonic.com) for voice synthesis  
+- [OpenRouter](https://openrouter.ai) for AI-powered question generation
+
+---
+
+## 💻 Running the App Locally
+
+### 📦 Prerequisites  
+Make sure you have:
+- [Python 3.9+](https://www.python.org)  
+- [Node.js & npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
+- [Neuphonic API key](https://neuphonic.com) 🔑  
+- [OpenRouter API key](https://openrouter.ai) 🔑  
+
+---
 
 Clone the git repository by running:
 
