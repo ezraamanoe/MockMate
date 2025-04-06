@@ -1,12 +1,75 @@
-# React + Vite
+# MockMate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<html>
+  <p>
+    A web app that connects to your Spotify account and uses AI to humorously critique your music taste and guess your MBTI, heavily inspired by <a         href="https://pudding.cool/2021/10/judge-my-music/">pudding.cool</a>. Built with React for the frontend and Flask for the backend, leveraging the Spotify API for user data and the DeepSeek API for AI-generated insights.
+  </p>
+</html>
 
-Currently, two official plugins are available:
+## Features
+<html>
+  <dl>
+    <dt>Spotify Integration:</dt>
+    <dd>- Log in and fetch top 10 tracks</dd>
+    <dt>AI Integration:</dt>
+    <dd>- Uses DeepSeek API via OpenRouter to judge music taste</dd>
+    <dt>Custom Image Generation:</dt>
+    <dd>- Generates a downloadable image with AI generated message and top tracks</dd>
+  </dl>
+</html>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Running the App Locally
+<html>
+  <dl>
+    <dt>Prerequisites:</dt>
+    <dd>
+      - <a href="https://www.python.org">Python 3.9+</a>
+      <br/>
+      - <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.js and npm</a>
+      <br/>
+      - <a href="https://neuphonic.com">Neuphonic API key</a> (for API credentials)
+      <br/>
+      - <a href="https://openrouter.ai">OpenRouter API key</a> (for AI model)
+    </dd>
+  </dl>
+</html>
 
-## Expanding the ESLint configuration
+Clone the git repository by running:
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+$ git clone https://github.com/ezraamanoe/MockMate.git
+$ cd MockMate
+```
+
+Set up the flask backend by creating a virual environment and installing requirements:
+
+```
+$ python -m venv venv
+$ source venv/bin/activate  # (Windows: venv\Scripts\activate)
+$ pip install -r requirements.txt
+```
+Create a `.env ` file in the root directory and add your API keys and credentials:
+
+```
+API_KEY=your_openrouter_api_key
+NEUPHONIC_API_KEY=your_neuphonic_api_key
+```
+
+Install dependencies and create a build for React:
+
+```
+$ npm install
+$ npm run build
+```
+
+Run using flask development server:
+```
+$ python3 server.py
+```
+
+Then, open http://127.0.0.1/5000 on your browser.
+
+
+
+
+
