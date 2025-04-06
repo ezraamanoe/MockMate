@@ -1,0 +1,9 @@
+Flask==3.1.0
+flask_cors==5.0.1
+openai==1.70.0
+pyneuphonic==1.8.0
+dotenv==0.9.9
+PyAudio==0.2.14
+python-dotenv==1.1.0
+
+
