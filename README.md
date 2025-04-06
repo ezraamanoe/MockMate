@@ -18,18 +18,12 @@ MockMate is an AI-powered mock interview web application that helps users practi
 
 ### Frontend  
 - React.js  
-- Web Speech API  
-- Material-UI (or your UI framework)  
+- React-speech-kit STT
 
 ### Backend  
 - Flask (Python)  
 - Neuphonics AI (voice synthesis)  
 - OpenRouter AI (question generation)  
-
-### Development  
-- npm/yarn  
-- Python pip  
-
 
 ## Running the App Locally
 <html>
