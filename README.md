@@ -69,13 +69,13 @@ NEUPHONIC_API_KEY=your_neuphonic_api_key
 Install dependencies and create a build for React:
 
 ```
-$ npm install
+$ npm install --force
 $ npm run build
 ```
 
 Run using flask development server:
 ```
-$ python3 server.py
+$ python server.py
 ```
 
 Then, open http://127.0.0.1/5000 on your browser.
