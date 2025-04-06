@@ -1,22 +1,35 @@
 # MockMate
 
-<html>
-  <p>
-    A web app that connects to your Spotify account and uses AI to humorously critique your music taste and guess your MBTI, heavily inspired by <a         href="https://pudding.cool/2021/10/judge-my-music/">pudding.cool</a>. Built with React for the frontend and Flask for the backend, leveraging the Spotify API for user data and the DeepSeek API for AI-generated insights.
-  </p>
-</html>
+## Overview  
+MockMate is an AI-powered mock interview web application that helps users practice job interviews with personalized questions based on the job description and user's qualifications. The app features voice interaction, multiple interview modes, and performance reviews.
 
-## Features
-<html>
-  <dl>
-    <dt>Spotify Integration:</dt>
-    <dd>- Log in and fetch top 10 tracks</dd>
-    <dt>AI Integration:</dt>
-    <dd>- Uses DeepSeek API via OpenRouter to judge music taste</dd>
-    <dt>Custom Image Generation:</dt>
-    <dd>- Generates a downloadable image with AI generated message and top tracks</dd>
-  </dl>
-</html>
+## Features  
+✅ **Personalized Interviews** - Questions generated from job descriptions  
+✅ **Voice Interaction** - Text-to-speech questions and voice-to-text answers  
+✅ **Two Interview Modes**:  
+   - Professional mode  
+   - "Troll mode" (mean interviewer for stress testing)  
+✅ **Structured Format**:  
+   - 5 questions max per session  
+   - 3-minute timer per question  
+✅ **Performance Review** - Detailed feedback after each session  
+
+## Technologies Used  
+
+### Frontend  
+- React.js  
+- Web Speech API  
+- Material-UI (or your UI framework)  
+
+### Backend  
+- Flask (Python)  
+- Neuphonics AI (voice synthesis)  
+- OpenRouter AI (question generation)  
+
+### Development  
+- npm/yarn  
+- Python pip  
+
 
 ## Running the App Locally
 <html>
