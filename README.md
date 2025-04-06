@@ -1,12 +1,86 @@
-# React + Vite
+# MockMate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview  
+MockMate is an AI-powered mock interview web application that helps users practice job interviews with personalized questions based on the job description and user's qualifications. The app features voice interaction, multiple interview modes, and performance reviews.
 
-Currently, two official plugins are available:
+## Features  
+✅ **Personalized Interviews** - Questions generated from job descriptions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ **Voice Interaction** - Text-to-speech questions and voice-to-text answers
 
-## Expanding the ESLint configuration
+✅ **Two Interview Modes**:  
+   - Professional mode  
+   - "Troll mode" (mean interviewer for stress testing)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✅ **Structured Format**:  
+   - 5 questions max per session  
+   - 3-minute timer per question
+
+✅ **Performance Review** - Detailed feedback after each session  
+
+## Technologies Used  
+
+### Frontend  
+- React.js  
+- React-speech-kit STT
+
+### Backend  
+- Flask (Python)  
+- Neuphonics AI (voice synthesis)  
+- OpenRouter AI (question generation)  
+
+## Running the App Locally
+<html>
+  <dl>
+    <dt>Prerequisites:</dt>
+    <dd>
+      - <a href="https://www.python.org">Python 3.9+</a>
+      <br/>
+      - <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.js and npm</a>
+      <br/>
+      - <a href="https://neuphonic.com">Neuphonic API key</a> (for API credentials)
+      <br/>
+      - <a href="https://openrouter.ai">OpenRouter API key</a> (for AI model)
+    </dd>
+  </dl>
+</html>
+
+Clone the git repository by running:
+
+```
+$ git clone https://github.com/ezraamanoe/MockMate.git
+$ cd MockMate
+```
+
+Set up the flask backend by creating a virual environment and installing requirements:
+
+```
+$ python -m venv venv
+$ source venv/bin/activate  # (Windows: venv\Scripts\activate)
+$ pip install -r requirements.txt
+```
+Create a `.env ` file in the root directory and add your API keys and credentials:
+
+```
+API_KEY=your_openrouter_api_key
+NEUPHONIC_API_KEY=your_neuphonic_api_key
+```
+
+Install dependencies and create a build for React:
+
+```
+$ npm install --force
+$ npm run build
+```
+
+Run using flask development server:
+```
+$ python server.py
+```
+
+Then, open http://127.0.0.1/5000 on your browser.
+
+
+
+
+
