@@ -25,10 +25,12 @@ function Chatbot() {
   const [hasFirstQuestion, setHasFirstQuestion] = useState(false);
   const [progress, setProgress] = useState(0);
   const duration = 180;
+  const [listening, setListening] = useState(false);
 
   const { listen, stop } = useSpeechRecognition({
-    onResult: ( result ) => {
-      setAnswer(result);}
+    onResult: (result) => {
+      setAnswer(answer + ' ' + result);
+    },
   });
 
   useEffect(() => {
@@ -166,7 +168,16 @@ function Chatbot() {
                 "Submit"
               )}
             </Button>
-            <Button onMouseDown={listen} onMouseUp={stop}><Mic /></Button>
+            <Button onClick={() => {
+                setListening(!listening)
+                if (!listening) {  // Add state to track listening
+                  listen();
+                } else {
+                  stop();
+                }
+              }}>
+              <Mic />{listening ? " Stop" : " Speak"}
+            </Button>
           </CardFooter>
         </Card>
       </div>
